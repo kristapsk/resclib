@@ -1,4 +1,4 @@
-#include "memimpl.h"
+#include "strimpl.h"
 
 #ifdef __cplusplus
 extern "C" {
