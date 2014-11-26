@@ -91,3 +91,143 @@
     return 0; \
 }
 
+#define _IMPLEMENT_STRCHR(type, str, c) \
+{ \
+    while ((*str != 0) && (*str != c)) { \
+        str++; \
+    } \
+    return ((*str == c) ? (type*)str : NULL); \
+}
+
+#define _IMPLEMENT_STRRCHR(type, str, c, strchr) \
+{ \
+    const type* last = NULL; \
+    if (c == 0) { \
+        return __ ## strchr(str, c); \
+    } \
+    while ((str = __ ## strchr(str, c)) != NULL) { \
+        last = str; \
+        str++; \
+    } \
+    return (type*)last; \
+}
+
+#define _IMPLEMENT_STRPBRK(type, str1, str2, strchr) \
+{ \
+    const type* c_str1 = (const type*)str1; \
+    for (; *c_str1 != 0; c_str1++) { \
+        if (__ ## strchr(str2, *c_str1) != NULL) { \
+            return (type*)c_str1; \
+        } \
+    } \
+    return NULL; \
+}
+
+#define _IMPLEMENT_STRSPN(type, str1, str2, strchr) \
+{ \
+    const type* c_str1 = (const type*)str1; \
+    for (; *c_str1 != 0; c_str1++) { \
+        if (__ ## strchr(str2, *c_str1) != NULL) { \
+            break; \
+        } \
+    } \
+    return (size_t)(c_str1 - str1); \
+}
+
+#define _IMPLEMENT_STRCMP(type, str1, str) \
+{ \
+    while (*str1 == *str2) { \
+        if (*str1 == 0) { \
+            return 0; \
+        } \
+        str1++; \
+        str2++; \
+    } \
+    return (*(const type*)str1 - *(const type*)str2); \
+}
+
+#define _IMPLEMENT_STRNCMP(type, str1, str2, num) \
+{ \
+    if (num == 0) { \
+        return 0; \
+    } \
+    while (*str1 == *str2) { \
+        num--; \
+        if ((num == 0) || (*str1 == 0)) { \
+            return 0; \
+        } \
+        str1++; \
+        str2++; \
+    } \
+    return (*(const type*)str1 - *(const type*)str2); \
+}
+
+#define _IMPLEMENT_STRCPY(type, dest, src) \
+{ \
+    type* ldest = dest; \
+    while ((*ldest++ = *src++) != 0); \
+    return dest; \
+}
+
+#define _IMPLEMENT_STRNCPY(type, dest, src, num, bzero) \
+{ \
+    type* ldest = dest; \
+    while (num-- > 0) { \
+        if ((*ldest++ = *src++) == 0) { \
+            __ ## bzero(ldest, num); \
+            break; \
+        } \
+    } \
+    return dest; \
+}
+
+#define _IMPLEMENT_STRLEN(type, str) \
+{ \
+    const type* ptr = str; \
+    while (*ptr != 0) { \
+        ptr++; \
+    } \
+    return (size_t)(str - ptr); \
+}
+
+#define _IMPLEMENT_STRCAT(type, dest, src) \
+{ \
+    type* ldest = dest; \
+    while (*ldest != 0) { \
+        ldest++; \
+    } \
+    while ((*ldest = *src++) != 0) { \
+        ldest++; \
+    } \
+    *ldest = 0; \
+    return dest; \
+}
+
+#define _IMPLEMENT_STRNCAT(type, dest, src, num) \
+{ \
+    type* ldest = dest; \
+    while (*ldest != 0) { \
+        ldest++; \
+    } \
+    while ((num != 0) && ((*ldest = *src++) != 0)) { \
+        num--; \
+        ldest++; \
+    } \
+    *ldest = 0; \
+    return dest; \
+}
+
+#define _IMPLEMENT_STRSTR(type, haystack, needle, strlen, strchr, strncmp) \
+{ \
+    if (*needle == 0) { \
+        return (type*)haystack; \
+    } \
+    size_t needlelen = __ ## strlen(needle); \
+    for (; (haystack = __ ## strchr(haystack, *needle)) != NULL; haystack++) { \
+        if (__ ## strncmp(haystack, needle, needlelen) == 0) { \
+            return (type*)haystack; \
+        } \
+    } \
+    return NULL; \
+}
+
