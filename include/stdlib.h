@@ -12,6 +12,8 @@ int abs (int x);
 long labs (long x);
 long long llabs (long long x);
 
+int mblen (const char* pmb, size_t max);
+
 #ifdef __cplusplus
 }
 #endif

@@ -7,6 +7,7 @@
 extern "C" {
 #endif
 
+void bcopy (const void* ptr1, const void* ptr2, size_t nbytes);
 void bzero (void* dest, size_t nbytes);
 
 #ifdef __cplusplus

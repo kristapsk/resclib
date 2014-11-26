@@ -14,7 +14,8 @@ all: $(BUILDIR) $(LIBC)
 $(BUILDDIR):
 	$(MKDIR) $(BUILDDIR)
 
-LIBC_OBJS=libc/memory/bzero.o \
+LIBC_OBJS=libc/memory/bcopy.o \
+	libc/memory/bzero.o \
 	libc/memory/memchr.o \
 	libc/memory/memcmp.o \
 	libc/memory/memcpy.o \
@@ -24,7 +25,8 @@ LIBC_OBJS=libc/memory/bzero.o \
 	libc/memory/memset.o \
 	libc/stdlib/abs.o \
 	libc/stdlib/labs.o \
-	libc/stdlib/llabs.o
+	libc/stdlib/llabs.o \
+	libc/stdlib/mblen.o
 
 $(LIBC): $(LIBC_OBJS) $(BUILDDIR)
 	$(AR) cru $@ $(LIBC_OBJS)
