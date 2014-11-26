@@ -2,8 +2,8 @@ CPU_ARCH=x86_64
 OS_ARCH=baremetal
 
 TCHAIN_PREFIX=
-CC=$(TCHAIN_PREFIX)cc
+CC=$(TCHAIN_PREFIX)gcc
 AR=$(TCHAIN_PREFIX)ar
-RM=$(TCHAIN_PREFIX)rm -f
+RM=rm -f
 MKDIR=mkdir -p
 
