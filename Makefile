@@ -23,6 +23,13 @@ LIBC_OBJS=libc/memory/bcopy.o \
 	libc/memory/memmove.o \
 	libc/memory/memmove_s.o \
 	libc/memory/memset.o \
+	libc/memory/wmemchr.o \
+	libc/memory/wmemcmp.o \
+	libc/memory/wmemcpy.o \
+	libc/memory/wmemcpy_s.o \
+	libc/memory/wmemmove.o \
+	libc/memory/wmemmove_s.o \
+	libc/memory/wmemset.o \
 	libc/stdlib/abs.o \
 	libc/stdlib/labs.o \
 	libc/stdlib/llabs.o \

@@ -1,6 +1,8 @@
 #ifndef __INTERN_H
 #define __INTERN_H
 
+#define _RECLIB_SOURCE
+
 #include <stddef.h>
 
 #ifdef __GNUC__
@@ -21,6 +23,10 @@ extern "C" {
 void* __memcpy (void* dest, const void* source, size_t nbytes);
 void* __memmove (void* dest, const void* source, size_t nbytes);
 void* __memset (void* dest, int c, size_t nbytes);
+
+wchar_t* __wmemcpy (wchar_t* dest, const wchar_t* source, size_t num);
+wchar_t* __wmemmove (wchar_t* dest, const wchar_t* source, size_t num);
+wchar_t* __wmemset (wchar_t* dest, wchar_t c, size_t num);
 
 #ifdef __cplusplus
 }
