@@ -1,7 +1,7 @@
 
 include config.mk
 
-CFLAGS=-nostdinc -I include/
+CFLAGS += -nostdinc -I include/
 
 BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
 LIBC=$(BUILDDIR)/reclibc.a
