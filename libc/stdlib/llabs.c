@@ -6,7 +6,7 @@ extern "C" {
 
 ABS(llabs, long long)
 
-long long labs (long long x) _WEAK_ALIAS_OF("__llabs");
+long long llabs (long long x) _WEAK_ALIAS_OF("__llabs");
 
 #ifdef __cplusplus
 }
