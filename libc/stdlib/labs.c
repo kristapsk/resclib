@@ -1,12 +1,14 @@
-#include "abs.h"
+#include "stdimpl.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-ABS(labs, long)
+long __labs (long x)
+    _IMPLEMENT_ABS(long)
 
-long labs (long x) _WEAK_ALIAS_OF("__labs");
+long abs (long x)
+    _WEAK_ALIAS_OF("__labs");
 
 #ifdef __cplusplus
 }
