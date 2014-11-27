@@ -5,7 +5,7 @@ extern "C" {
 #endif
 
 long __labs (long x)
-    _IMPLEMENT_ABS(long)
+    _IMPLEMENT_ABS(long, x)
 
 long abs (long x)
     _WEAK_ALIAS_OF("__labs");

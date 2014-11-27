@@ -6,7 +6,7 @@
 
 // This is a well known bithack for abs() to avoid branching.
 // http://graphics.stanford.edu/~seander/bithacks.html#IntegerAbs
-#define _IMPLEMENT_ABS(type) \
+#define _IMPLEMENT_ABS(type, x) \
 { \
     type mask = x >> sizeof(type) * CHAR_BIT - 1; \
     return (x + mask) ^ mask; \
