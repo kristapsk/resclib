@@ -20,13 +20,20 @@
 extern "C" {
 #endif
 
+void __bzero (void* dest, size_t nbytes);
 void* __memcpy (void* dest, const void* source, size_t nbytes);
 void* __memmove (void* dest, const void* source, size_t nbytes);
 void* __memset (void* dest, int c, size_t nbytes);
-
+char* __strchr (const char* str, int c);
+size_t __strlen (const char* str);
+int __strncmp (const char* str1, const char* str2, size_t num);
+wchar_t* __wcschr (const wchar_t* str, wchar_t c);
+size_t __wcslen (const wchar_t* str);
+int __wcsncmp (const wchar_t* str1, const wchar_t* str2, size_t num);
 wchar_t* __wmemcpy (wchar_t* dest, const wchar_t* source, size_t num);
 wchar_t* __wmemmove (wchar_t* dest, const wchar_t* source, size_t num);
 wchar_t* __wmemset (wchar_t* dest, wchar_t c, size_t num);
+void __wzero (wchar_t* dest, size_t num);
 
 #ifdef __cplusplus
 }
