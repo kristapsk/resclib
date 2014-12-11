@@ -1,6 +1,8 @@
 
 include config.mk
 
+include mkfiles/${CPU_ARCH}.mk
+
 CFLAGS += -nostdinc -I include/
 
 BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
