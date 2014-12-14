@@ -3,7 +3,7 @@ include config.mk
 
 include mkfiles/${CPU_ARCH}.mk
 
-CFLAGS += -nostdinc -I include/
+CFLAGS += -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_ARCH)
 
 BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
 LIBC=$(BUILDDIR)/reclibc.a
