@@ -1,5 +1,5 @@
 CPU_ARCH=x86_64
-OS_ARCH=baremetal
+OS_ARCH=none
 
 TCHAIN_PREFIX=
 CC=$(TCHAIN_PREFIX)gcc
