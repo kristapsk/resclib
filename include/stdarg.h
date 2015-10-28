@@ -48,10 +48,7 @@
 #define _VA_LIST_DEFINED
 #endif
 
-#ifndef	_VA_LIST
-#define _VA_LIST
-typedef char* va_list;
-#endif
+#include <_va_list.h>
 
 
 /*

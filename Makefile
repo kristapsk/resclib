@@ -7,8 +7,9 @@ CFLAGS += -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_ARCH)
 
 BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
 LIBC=$(BUILDDIR)/reclibc.a
+HELLO=$(BUILDDIR)/hello
 
-all: $(BUILDIR) $(LIBC)
+all: $(BUILDIR) $(LIBC) $(HELLO)
 
 .c.o:
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -59,10 +60,15 @@ LIBC_OBJS=libc/stdlib/abs.o \
 	libc/string/wmemmove.o \
 	libc/string/wmemmove_s.o \
 	libc/string/wmemset.o \
-	libc/string/wzero.o
+	libc/string/wzero.o \
+	libc/sys/$(CPU_ARCH)-$(OS_ARCH)/crt0.o \
+	libc/sys/$(CPU_ARCH)-$(OS_ARCH)/syscalls.o
 
 $(LIBC): $(LIBC_OBJS) $(BUILDDIR)
 	$(AR) cru $@ $(LIBC_OBJS)
+
+$(HELLO): $(LIBC) hello.o
+	$(LINK) -o $@ hello.o $(LIBC)
 
 clean:
 	$(RM) $(LIBC)

@@ -1,9 +1,11 @@
 CPU_ARCH=x86_64
-OS_ARCH=none
+#OS_ARCH=none
+OS_ARCH=linux
 
 TCHAIN_PREFIX=
 CC=$(TCHAIN_PREFIX)gcc
 AR=$(TCHAIN_PREFIX)ar
+LINK=$(TCHAIN_PREFIX)ld
 RM=rm -f
 MKDIR=mkdir -p
 

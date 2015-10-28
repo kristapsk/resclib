@@ -187,7 +187,7 @@
     while (*ptr != 0) { \
         ptr++; \
     } \
-    return (size_t)(str - ptr); \
+    return (size_t)(ptr - str); \
 }
 
 #define _IMPLEMENT_STRCAT(type, dest, src) \
