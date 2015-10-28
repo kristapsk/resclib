@@ -68,7 +68,7 @@ $(LIBC): $(LIBC_OBJS) $(BUILDDIR)
 	$(AR) cru $@ $(LIBC_OBJS)
 
 $(HELLO): $(LIBC) hello.o
-	$(LINK) -o $@ hello.o $(LIBC)
+	$(LINK) $(LINK_OPTS) -o $@ hello.o $(LIBC)
 
 clean:
 	$(RM) $(LIBC)
