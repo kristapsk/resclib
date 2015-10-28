@@ -73,4 +73,5 @@ $(HELLO): $(LIBC) hello.o
 clean:
 	$(RM) $(LIBC)
 	$(RM) $(LIBC_OBJS)
+	$(RM) $(HELLO)
 
