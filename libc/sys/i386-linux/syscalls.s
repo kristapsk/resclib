@@ -1,30 +1,44 @@
 use32
-global puts
+global __putchar
+global __puts
 extern __strlen
 
-; syscall args: i386          ebx   ecx   edx   esi   edi   ebp
-; syscall args: x86_64        rdi   rsi   rdx   r10   r8    r9    -
+%define EOF -1
 
-; int puts (const char* str)
-puts:
-    push    ebp
-    mov     ebp, esp
+; syscall args: i386          ebx   ecx   edx   esi   edi   ebp
+
+; int putchar (int character)
+__putchar:
     push    ebx
-    push    dword [ebp+8]
-    call    __strlen
-    add     esp, 4
-    mov     edx, eax            ; buffer size
-    mov     eax, 4              ; sys_write
-    mov     ebx, 1              ; stdout
-    mov     ecx, [ebp+8]        ; buffer (str)
-    int     80h
     mov     eax, 4
-    mov     ecx, linefeed
+    lea     ecx, [esp+8]
     mov     ebx, 1
     mov     edx, ebx
     int     80h
+    cmp     eax, EOF
+    je      .err
+    mov     eax, [esp+8]
+.err:
     pop     ebx
-    pop     ebp
     ret
 
-linefeed    db 0Ah
+; int puts (const char* str)
+__puts:
+    push    ebx
+    push    dword [esp+8]
+    call    __strlen
+    pop     ecx
+    mov     edx, eax            ; buffer size
+    mov     eax, 4              ; sys_write
+    mov     ebx, 1              ; stdout
+    mov     ecx, [esp+8]        ; buffer (str)
+    int     80h
+    cmp     eax, EOF
+    je      .ret
+    push    0Ah
+    call    __putchar
+    pop     ebx
+.ret:
+    pop     ebx
+    ret
+

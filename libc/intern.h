@@ -24,6 +24,7 @@ void __bzero (void* dest, size_t nbytes);
 void* __memcpy (void* dest, const void* source, size_t nbytes);
 void* __memmove (void* dest, const void* source, size_t nbytes);
 void* __memset (void* dest, int c, size_t nbytes);
+int __putchar (int character);
 char* __strchr (const char* str, int c);
 size_t __strlen (const char* str);
 int __strncmp (const char* str1, const char* str2, size_t num);

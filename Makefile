@@ -17,7 +17,10 @@ all: $(BUILDIR) $(LIBC) $(HELLO)
 $(BUILDDIR):
 	$(MKDIR) $(BUILDDIR)
 
-LIBC_OBJS=libc/stdlib/abs.o \
+LIBC_OBJS= \
+	libc/stdio/putchar.o \
+	libc/stdio/puts.o \
+	libc/stdlib/abs.o \
 	libc/stdlib/labs.o \
 	libc/stdlib/llabs.o \
 	libc/stdlib/mblen.o \
