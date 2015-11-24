@@ -12,7 +12,6 @@ __puts:
     push    rdi
     call    __strlen
     mov     rdx, rax            ; arg 3 - buffer size
-    mov     edx, 14
     pop     rsi                 ; arg 2 - buffer (str)
     mov     eax, 1              ; sys_write
     mov     edi, 1              ; stdout
