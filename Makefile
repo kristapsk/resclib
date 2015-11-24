@@ -18,6 +18,15 @@ $(BUILDDIR):
 	$(MKDIR) $(BUILDDIR)
 
 LIBC_OBJS= \
+	libc/math/fabs.o \
+	libc/math/fabsf.o \
+	libc/math/fabsl.o \
+	libc/math/lround.o \
+	libc/math/lroundf.o \
+	libc/math/lroundl.o \
+	libc/math/llround.o \
+	libc/math/llroundf.o \
+	libc/math/llroundl.o \
 	libc/stdio/putchar.o \
 	libc/stdio/puts.o \
 	libc/stdlib/abs.o \
