@@ -27,6 +27,7 @@ LIBC_OBJS= \
 	libc/math/llround.o \
 	libc/math/llroundf.o \
 	libc/math/llroundl.o \
+	libc/mbstr/mbschr.o \
 	libc/stdio/putchar.o \
 	libc/stdio/puts.o \
 	libc/stdlib/abs.o \

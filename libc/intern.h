@@ -28,6 +28,7 @@ int __putchar (int character);
 char* __strchr (const char* str, int c);
 size_t __strlen (const char* str);
 int __strncmp (const char* str1, const char* str2, size_t num);
+char* __strstr (char* str1, const char* str2);
 wchar_t* __wcschr (const wchar_t* str, wchar_t c);
 size_t __wcslen (const wchar_t* str);
 int __wcsncmp (const wchar_t* str1, const wchar_t* str2, size_t num);
