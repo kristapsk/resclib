@@ -11,9 +11,7 @@
 extern "C" {
 #endif
 
-#if (__STDC_VERSION__ >= 201112L)
-    void _Exit (int status);
-#endif
+void _Exit (int status);
 
 int abs (int x);
 long labs (long x);
