@@ -18,6 +18,20 @@ $(BUILDDIR):
 	$(MKDIR) $(BUILDDIR)
 
 LIBC_OBJS= \
+	libc/ctype/isalnum.o \
+	libc/ctype/isalpha.o \
+	libc/ctype/isblank.o \
+	libc/ctype/iscntrl.o \
+	libc/ctype/isdigit.o \
+	libc/ctype/isgraph.o \
+	libc/ctype/islower.o \
+	libc/ctype/isprint.o \
+	libc/ctype/ispunct.o \
+	libc/ctype/isspace.o \
+	libc/ctype/isupper.o \
+	libc/ctype/isxdigit.o \
+	libc/ctype/tolower.o \
+	libc/ctype/toupper.o \
 	libc/math/fabs.o \
 	libc/math/fabsf.o \
 	libc/math/fabsl.o \

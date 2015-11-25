@@ -21,6 +21,10 @@ extern "C" {
 #endif
 
 void __bzero (void* dest, size_t nbytes);
+int __isalnum (int c);
+int __isalpha (int c);
+int __isdigit (int c);
+int __isgraph (int c);
 void* __memcpy (void* dest, const void* source, size_t nbytes);
 void* __memmove (void* dest, const void* source, size_t nbytes);
 void* __memset (void* dest, int c, size_t nbytes);
