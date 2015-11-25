@@ -14,7 +14,7 @@ char* __mbschr (char* str, mbchar_t c)
     else {
         char buf[sizeof(mbchar_t)+1];
         *((mbchar_t*)buf) = c;
-        buf[__min(sizeof(mbchar_t),MBMAXLEN)] = '\0';
+        buf[__min(sizeof(mbchar_t),(size_t)MBMAXLEN)] = '\0';
         return __strstr(str, buf);
     }
 }
