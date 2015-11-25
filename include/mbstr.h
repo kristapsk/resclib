@@ -3,9 +3,9 @@
 
 #include <___int.h>
 
-#define MBMAXLEN (4)
+#define MBMAXLEN (6)
 
-typedef unsigned __int32 mbchar_t;
+typedef unsigned __int64 mbchar_t;
 
 #ifdef __cplusplus
 extern "C" {
