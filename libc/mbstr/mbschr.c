@@ -7,7 +7,15 @@ extern "C" {
 
 char* __mbschr (char* str, mbchar_t c)
 {
-    return (c < 0x80 ? __strchr(str, c) : __strstr(str, (const char*)&c));
+    if (c < 0x80) {
+        return __strchr(str, c);
+    }
+    else {
+        char buf[sizeof(mbchar_t)+1];
+        *((mbchar_t*)buf) = c;
+        buf[sizeof(mbchar_t)] = '\0';
+        return __strstr(str, buf);
+    }
 }
 
 char* mbschr (char* str, mbchar_t c) \

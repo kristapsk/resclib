@@ -1,7 +1,11 @@
 #ifndef _MBSTR_H
 #define _MBSTR_H
 
-typedef unsigned long long mbchar_t;
+#include <___int.h>
+
+#define MBMAXLEN (4)
+
+typedef unsigned __int32 mbchar_t;
 
 #ifdef __cplusplus
 extern "C" {
