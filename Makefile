@@ -3,7 +3,7 @@ include config.mk
 
 include mkfiles/${CPU_ARCH}.mk
 
-CFLAGS += -Wall -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_ARCH)
+CFLAGS += -Wall -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_ARCH) -fno-stack-protector 
 
 BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
 LIBC=$(BUILDDIR)/reclibc.a
@@ -89,7 +89,9 @@ LIBC_OBJS= \
 	libc/string/wmemset.o \
 	libc/string/wzero.o \
 	libc/sys/$(CPU_ARCH)-$(OS_ARCH)/crt0.o \
-	libc/sys/$(CPU_ARCH)-$(OS_ARCH)/syscalls.o
+	libc/sys/$(CPU_ARCH)-$(OS_ARCH)/syscalls.o \
+	libc/unistd/read.o \
+	libc/unistd/write.o
 
 $(LIBC): $(LIBC_OBJS) $(BUILDDIR)
 	$(AR) cru $@ $(LIBC_OBJS)

@@ -1,6 +1,10 @@
 use32
+
 global __putchar
 global __puts
+global __read
+global __write
+
 extern __strlen
 
 %define EOF -1
@@ -40,5 +44,23 @@ __puts:
     pop     ebx
 .ret:
     pop     ebx
+    ret
+
+; ssize_t read (int fd, void* buf, size_t nbytes);
+__read:
+    mov     eax, 3
+    mov     ebx, [esp+4]
+    mov     ecx, [esp+8]
+    mov     edx, [esp+12]
+    int     80h
+    ret
+
+; ssize_t write (int fd, const void* buf, size_t nbytes);
+__write:
+    mov     eax, 4
+    mov     ebx, [esp+4]
+    mov     ecx, [esp+8]
+    mov     edx, [esp+12]
+    int     80h
     ret
 

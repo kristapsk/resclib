@@ -3,9 +3,9 @@
 
 #include <___int.h>
 #include <_null.h>
+#include <_size_t.h>
 
 typedef signed long ptrdiff_t;
-typedef unsigned long size_t;
 
 #ifndef __cplusplus
     typedef unsigned __int32 wchar_t;
