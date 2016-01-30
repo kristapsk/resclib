@@ -2,8 +2,6 @@ use64
 
 global __putchar
 global __puts
-global __read
-global __write
 
 extern __strlen
 
@@ -37,17 +35,5 @@ __putchar:
     je      .err
     mov     rax, [rsp-8]
 .err:
-    ret
-
-; ssize_t read (int fd, void* buf, size_t nbytes)
-__read:
-    xor     rax, rax
-    syscall
-    ret
-
-; ssize_t write (int fd, const void* buf, size_t nbytes)
-__write:
-    mov     eax, 1
-    syscall
     ret
 

@@ -89,9 +89,10 @@ LIBC_OBJS= \
 	libc/string/wmemset.o \
 	libc/string/wzero.o \
 	libc/sys/$(CPU_ARCH)-$(OS_ARCH)/crt0.o \
-	libc/sys/$(CPU_ARCH)-$(OS_ARCH)/syscalls.o \
 	libc/unistd/read.o \
 	libc/unistd/write.o
+
+include libc/sys/${CPU_ARCH}-${OS_ARCH}/sys.mk
 
 $(LIBC): $(LIBC_OBJS) $(BUILDDIR)
 	$(AR) cru $@ $(LIBC_OBJS)
