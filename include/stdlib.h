@@ -37,12 +37,15 @@ int mblen (const char* pmb, size_t max);
 #ifdef _RECLIB_SOURCE
     #include <___int.h>
     #include <_errno_t.h>
+    
+    errno_t _get_errno (int* pvalue);
+    errno_t _set_errno (int value);
+
     errno_t _itoa_s (int value, char* dest, size_t dest_nbytes, int radix);
     errno_t _i64toa_s (__int64 value, char* dest,
         size_t dest_nbytes, int radix);
     errno_t _ui64toa_s (unsigned __int64 value, char* dest,
         size_t dest_nbytes, int radix);
-    errno_t _set_errno (int value);
 #endif
 
 #ifdef __cplusplus

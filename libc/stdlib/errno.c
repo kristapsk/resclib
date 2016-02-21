@@ -1,4 +1,5 @@
 #define _RECLIB_SOURCE
+#include <errno.h>
 #include <stdlib.h>
 #include "../intern.h"
 
@@ -12,6 +13,19 @@ int* __errno_location (void)
 {
     return &_errno;
 }
+
+errno_t ___get_errno (int* pvalue)
+{
+    if (pvalue == NULL) {
+        _errno = EINVAL;
+        return EINVAL;
+    }
+    *pvalue = _errno;
+    return 0;
+}
+
+errno_t _get_errno (int* pvalue) \
+    _WEAK_ALIAS_OF("___get_errno");
 
 errno_t ___set_errno (int value)
 {
