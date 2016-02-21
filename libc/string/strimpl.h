@@ -73,7 +73,7 @@
         err = ERANGE; \
     } \
     if (err != 0) { \
-        _set_errno(err); \
+        ___set_errno(err); \
         return err; \
     } \
 
@@ -229,5 +229,18 @@
         } \
     } \
     return NULL; \
+}
+
+#define _IMPLEMENT_STRREV(type, str, strlen) \
+{ \
+    size_t len = __ ## strlen(str); \
+    size_t halflen = len >> 1; \
+    size_t i; \
+    for (i = 0; i < halflen; i++) { \
+        type tmp = str[i]; \
+        str[i] = str[len - i - 1]; \
+        str[len - i - 1] = tmp; \
+    } \
+    return str; \
 }
 

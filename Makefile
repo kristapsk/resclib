@@ -45,9 +45,13 @@ LIBC_OBJS= \
 	libc/stdio/putchar.o \
 	libc/stdio/puts.o \
 	libc/stdlib/abs.o \
+	libc/stdlib/errno.o \
+	libc/stdlib/i64toa_s.o \
+	libc/stdlib/itoa_s.o \
 	libc/stdlib/labs.o \
 	libc/stdlib/llabs.o \
 	libc/stdlib/mblen.o \
+	libc/stdlib/ui64toa_s.o \
 	libc/string/bcopy.o \
 	libc/string/bzero.o \
 	libc/string/memchr.o \
@@ -66,6 +70,7 @@ LIBC_OBJS= \
 	libc/string/strncmp.o \
 	libc/string/strpbrk.o \
 	libc/string/strrchr.o \
+	libc/string/strrev.o \
 	libc/string/strspn.o \
 	libc/string/strstr.o \
 	libc/string/wcopy.o \
@@ -78,6 +83,7 @@ LIBC_OBJS= \
 	libc/string/wcsncmp.o \
 	libc/string/wcspbrk.o \
 	libc/string/wcsrchr.o \
+	libc/string/wcsrev.o \
 	libc/string/wcsspn.o \
 	libc/string/wcsstr.o \
 	libc/string/wmemchr.o \

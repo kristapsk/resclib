@@ -11,4 +11,8 @@
 
 #define EINVAL      (4)
 
+int* __errno_location (void);
+
+#define errno (*__errno_location())
+
 #endif

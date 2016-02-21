@@ -20,6 +20,10 @@ char* strpbrk (char* str1, const char* str2);
 size_t strspn (const char* str1, const char* str2);
 char* strstr (char* str1, const char* str2 );
 
+#ifdef _RECLIB_SOURCE
+    char* strrev (char* str);
+#endif
+
 #ifdef __cplusplus
 }
 #endif

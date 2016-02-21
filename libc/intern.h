@@ -3,6 +3,7 @@
 
 #define _RECLIB_SOURCE
 
+#include <_errno_t.h>
 #include <stddef.h>
 
 #ifdef __GNUC__
@@ -20,6 +21,8 @@
 extern "C" {
 #endif
 
+int __abs (int x);
+long long __llabs (long long x);
 void __bzero (void* dest, size_t nbytes);
 int __isalnum (int c);
 int __isalpha (int c);
@@ -29,13 +32,16 @@ void* __memcpy (void* dest, const void* source, size_t nbytes);
 void* __memmove (void* dest, const void* source, size_t nbytes);
 void* __memset (void* dest, int c, size_t nbytes);
 int __putchar (int character);
+errno_t ___set_errno (int value);
 char* __strchr (const char* str, int c);
 size_t __strlen (const char* str);
 int __strncmp (const char* str1, const char* str2, size_t num);
+char* __strrev (char* str);
 char* __strstr (char* str1, const char* str2);
 wchar_t* __wcschr (const wchar_t* str, wchar_t c);
 size_t __wcslen (const wchar_t* str);
 int __wcsncmp (const wchar_t* str1, const wchar_t* str2, size_t num);
+wchar_t* __wcsrev (wchar_t* str);
 wchar_t* __wmemcpy (wchar_t* dest, const wchar_t* source, size_t num);
 wchar_t* __wmemmove (wchar_t* dest, const wchar_t* source, size_t num);
 wchar_t* __wmemset (wchar_t* dest, wchar_t c, size_t num);

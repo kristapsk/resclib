@@ -33,6 +33,10 @@ wchar_t* wmemset (wchar_t* dest, wchar_t c, size_t num);
         (wchar_t* dest, size_t dest_num, const wchar_t* src, size_t num);
 #endif
 
+#ifdef _RECLIB_SOURCE
+    wchar_t* wcsrev (wchar_t* str);
+#endif
+
 #ifdef __cplusplus
 }
 #endif
