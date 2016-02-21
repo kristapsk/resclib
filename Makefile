@@ -101,7 +101,8 @@ LIBC_OBJS= \
 include libc/sys/${CPU_ARCH}-${OS_ARCH}/sys.mk
 
 $(LIBC): $(LIBC_OBJS) $(BUILDDIR)
-	$(AR) cru $@ $(LIBC_OBJS)
+	$(RM) $@
+	$(AR) cq $@ $(LIBC_OBJS)
 
 $(HELLO): $(LIBC) hello.o
 	$(LINK) $(LINK_OPTS) -o $@ hello.o $(LIBC)
