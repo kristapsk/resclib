@@ -7,7 +7,7 @@ extern "C" {
 long long int __llroundf (float x)
     _IMPLEMENT_LROUND(long long int, x)
 
-long long int lroundf (float x)
+long long int llroundf (float x)
     _WEAK_ALIAS_OF("__llroundf");
 
 #ifdef __cplusplus
