@@ -1,15 +1,22 @@
+#include <stdio.h>
+#include <unistd.h>
+#include "../intern.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern int __puts (const char* str);
-
-// FixMe: how to get rid of this double call? (nasm doesn't support weak syms)
-#pragma weak puts
-int puts (const char* str)
+int __puts (const char* str)
 {
-    return __puts(str);
+    size_t len = __strlen(str);
+    if (__write(STDOUT_FILENO, str, len) == -1) {
+        return EOF;
+    }
+    return __putchar('\n');
 }
+
+int puts (const char* str)
+    _WEAK_ALIAS_OF("__puts");
 
 #ifdef __cplusplus
 }

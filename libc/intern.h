@@ -4,6 +4,7 @@
 #define _RECLIB_SOURCE
 
 #include <_errno_t.h>
+#include <_ssize_t.h>
 #include <stddef.h>
 
 #ifdef __GNUC__
@@ -45,6 +46,7 @@ wchar_t* __wcsrev (wchar_t* str);
 wchar_t* __wmemcpy (wchar_t* dest, const wchar_t* source, size_t num);
 wchar_t* __wmemmove (wchar_t* dest, const wchar_t* source, size_t num);
 wchar_t* __wmemset (wchar_t* dest, wchar_t c, size_t num);
+ssize_t __write (int fd, const void* buf, size_t nbytes);
 void __wzero (wchar_t* dest, size_t num);
 
 #ifdef __cplusplus
