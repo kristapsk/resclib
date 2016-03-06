@@ -12,7 +12,10 @@ int __puts (const char* str)
     if (__write(STDOUT_FILENO, str, len) == -1) {
         return EOF;
     }
-    return __putchar('\n');
+    if (__write(STDOUT_FILENO, "\n", 1) == -1) {
+        return EOF;
+    }
+    return 1;
 }
 
 int puts (const char* str)
