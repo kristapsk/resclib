@@ -9,7 +9,7 @@ BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
 LIBC=$(BUILDDIR)/reclibc.a
 HELLO=$(BUILDDIR)/hello
 
-all: $(BUILDIR) $(LIBC) $(HELLO)
+all: $(BUILDIR) libc hello
 
 .c.o:
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -100,10 +100,12 @@ LIBC_OBJS= \
 
 include libc/sys/${CPU_ARCH}-${OS_ARCH}/sys.mk
 
+libc: $(LIBC)
 $(LIBC): $(LIBC_OBJS) $(BUILDDIR)
 	$(RM) $@
 	$(AR) cq $@ $(LIBC_OBJS)
 
+hello: $(HELLO)
 $(HELLO): $(LIBC) hello.o
 	$(LINK) $(LINK_OPTS) -o $@ hello.o $(LIBC)
 
