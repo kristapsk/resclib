@@ -22,6 +22,18 @@
         __x > __y ? __x : __y; \
     })
 
+#ifdef _RECLIB_SOURCE
+
+    #ifdef __cplusplus
+        template <typename T, size_t N> inline size_t _countof
+            (const T (&array)[N])
+            { return N; }
+    #else
+        #define _countof(array) (sizeof(array) / sizeof(array[0]))
+    #endif
+
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -37,7 +49,7 @@ int mblen (const char* pmb, size_t max);
 #ifdef _RECLIB_SOURCE
     #include <___int.h>
     #include <_errno_t.h>
-    
+
     errno_t _get_errno (int* pvalue);
     errno_t _set_errno (int value);
 
