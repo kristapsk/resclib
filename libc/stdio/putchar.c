@@ -8,12 +8,7 @@ extern "C" {
 
 int __putchar (int character)
 {
-    if (__write(STDOUT_FILENO, &character, 1) == -1) {
-        return EOF;
-    }
-    else {
-        return character;
-    }
+    return __fputc(character, stdout);
 }
 
 int putchar (int character)

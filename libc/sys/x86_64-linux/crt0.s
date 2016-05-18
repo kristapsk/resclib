@@ -1,9 +1,9 @@
 use64
-extern main 
+extern __libc_init
 global _start, _Exit
 
 _start:
-    call    main
+    call    __libc_init
     mov     rdi, rax
     ; passthrough
 _Exit:

@@ -18,6 +18,7 @@ $(BUILDDIR):
 	$(MKDIR) $(BUILDDIR)
 
 LIBC_OBJS= \
+	libc/init.o \
 	libc/ctype/isalnum.o \
 	libc/ctype/isalpha.o \
 	libc/ctype/isblank.o \
@@ -42,6 +43,11 @@ LIBC_OBJS= \
 	libc/math/llroundf.o \
 	libc/math/llroundl.o \
 	libc/mbstr/mbschr.o \
+	libc/stdio/clearerr.o \
+	libc/stdio/feof.o \
+	libc/stdio/ferror.o \
+	libc/stdio/fputc.o \
+	libc/stdio/fputs.o \
 	libc/stdio/putchar.o \
 	libc/stdio/puts.o \
 	libc/stdlib/abs.o \

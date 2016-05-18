@@ -6,6 +6,7 @@
 #include <_errno_t.h>
 #include <_ssize_t.h>
 #include <stddef.h>
+#include <stdio.h>
 
 #ifdef __GNUC__
 
@@ -25,6 +26,8 @@ extern "C" {
 int __abs (int x);
 long long __llabs (long long x);
 void __bzero (void* dest, size_t nbytes);
+int __fputc (int character, FILE* stream);
+int __fputs (const char* str, FILE* stream);
 int __isalnum (int c);
 int __isalpha (int c);
 int __isdigit (int c);
@@ -32,7 +35,6 @@ int __isgraph (int c);
 void* __memcpy (void* dest, const void* source, size_t nbytes);
 void* __memmove (void* dest, const void* source, size_t nbytes);
 void* __memset (void* dest, int c, size_t nbytes);
-int __putchar (int character);
 errno_t ___set_errno (int value);
 char* __strchr (const char* str, int c);
 size_t __strlen (const char* str);
