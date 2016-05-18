@@ -112,11 +112,11 @@ $(LIBC): $(LIBC_OBJS) $(BUILDDIR)
 	$(AR) cq $@ $(LIBC_OBJS)
 
 hello: $(HELLO)
-$(HELLO): $(LIBC) hello.o
-	$(LINK) $(LINK_OPTS) -o $@ hello.o $(LIBC)
+$(HELLO): $(LIBC) examples/hello.o
+	$(LINK) $(LINK_OPTS) -o $@ examples/hello.o $(LIBC)
 
 clean:
 	$(RM) $(LIBC)
 	$(RM) $(LIBC_OBJS)
-	$(RM) $(HELLO) hello.o
+	$(RM) $(HELLO) examples/hello.o
 
