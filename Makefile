@@ -44,12 +44,19 @@ LIBC_OBJS= \
 	libc/math/llroundl.o \
 	libc/mbstr/mbschr.o \
 	libc/stdio/clearerr.o \
+	libc/stdio/doprintf.o \
 	libc/stdio/feof.o \
 	libc/stdio/ferror.o \
+	libc/stdio/fprintf.o \
 	libc/stdio/fputc.o \
 	libc/stdio/fputs.o \
+	libc/stdio/printf.o \
 	libc/stdio/putchar.o \
 	libc/stdio/puts.o \
+	libc/stdio/snprintf.o \
+	libc/stdio/vfprintf.o \
+	libc/stdio/vprintf.o \
+	libc/stdio/vsnprintf.o \
 	libc/stdlib/abs.o \
 	libc/stdlib/errno.o \
 	libc/stdlib/i64toa_s.o \

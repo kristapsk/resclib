@@ -16,6 +16,9 @@
 
 #endif
 
+typedef void (*doprintf_helper_func_t)
+    (int character, void** outp, size_t* out_nbytes, int* retval);
+
 // Library functions used by other library functions should be defined here
 // with their canonical names. Weak aliases may be overriden by application.
 
@@ -32,6 +35,7 @@ int __isalnum (int c);
 int __isalpha (int c);
 int __isdigit (int c);
 int __isgraph (int c);
+errno_t ___itoa_s (int value, char* dest, size_t dest_nbytes, int radix);
 void* __memcpy (void* dest, const void* source, size_t nbytes);
 void* __memmove (void* dest, const void* source, size_t nbytes);
 void* __memset (void* dest, int c, size_t nbytes);
@@ -41,6 +45,10 @@ size_t __strlen (const char* str);
 int __strncmp (const char* str1, const char* str2, size_t num);
 char* __strrev (char* str);
 char* __strstr (char* str1, const char* str2);
+int __tolower (int c);
+int __vfprintf (FILE* stream, const char* format, va_list args);
+int __vsnprintf (char* buf, size_t buf_nbytes, const char* format,
+    va_list args);
 wchar_t* __wcschr (const wchar_t* str, wchar_t c);
 size_t __wcslen (const wchar_t* str);
 int __wcsncmp (const wchar_t* str1, const wchar_t* str2, size_t num);
