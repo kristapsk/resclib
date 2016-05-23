@@ -22,6 +22,8 @@ char* strstr (char* str1, const char* str2 );
 
 #ifdef _RECLIB_SOURCE
     char* strrev (char* str);
+    int _stricmp (const char* str1, const char* str2);
+    int _strnicmp (const char* str1, const char* str2, size_t num);
 #endif
 
 #ifdef __cplusplus

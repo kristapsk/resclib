@@ -78,9 +78,11 @@ LIBC_OBJS= \
 	libc/string/strchr.o \
 	libc/string/strcmp.o \
 	libc/string/strcpy.o \
+	libc/string/stricmp.o \
 	libc/string/strlen.o \
 	libc/string/strncat.o \
 	libc/string/strncmp.o \
+	libc/string/strnicmp.o \
 	libc/string/strpbrk.o \
 	libc/string/strrchr.o \
 	libc/string/strrev.o \

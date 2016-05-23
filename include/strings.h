@@ -9,6 +9,8 @@ extern "C" {
 
 void bcopy (const void* ptr1, void* ptr2, size_t nbytes);
 void bzero (void* dest, size_t nbytes);
+int strcasecmp (const char* str1, const char* str2);
+int strncasecmp (const char* str1, const char* str2, size_t num);
 
 // Extensions
 #if defined(_RECLIB_SOURCE)

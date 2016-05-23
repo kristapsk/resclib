@@ -134,9 +134,10 @@
     return (size_t)(c_str1 - str1); \
 }
 
-#define _IMPLEMENT_STRCMP(type, str1, str) \
-{ \
-    while (*str1 == *str2) { \
+#define _IMPLEMENT_STRCMP_HEAD(type, str1, str2) \
+{
+
+#define _IMPLEMENT_STRCMP_TAIL(type, str1, str2) \
         if (*str1 == 0) { \
             return 0; \
         } \
@@ -144,14 +145,25 @@
         str2++; \
     } \
     return (*(const type*)str1 - *(const type*)str2); \
-}
+}    
 
-#define _IMPLEMENT_STRNCMP(type, str1, str2, num) \
+#define _IMPLEMENT_STRCMP(type, str1, str2) \
+    _IMPLEMENT_STRCMP_HEAD(type, str1, str2) \
+    while (*str1 == *str2) { \
+    _IMPLEMENT_STRCMP_TAIL(type, str1, str2) 
+
+#define _IMPLEMENT_STRICMP(type, str1, str2, tolower) \
+    _IMPLEMENT_STRCMP_HEAD(type, str1, str2) \
+    while (tolower(*str1) == tolower(*str2)) { \
+    _IMPLEMENT_STRCMP_TAIL(type, str1, str2) 
+
+#define _IMPLEMENT_STRNCMP_HEAD(type, str1, str2, num) \
 { \
     if (num == 0) { \
         return 0; \
-    } \
-    while (*str1 == *str2) { \
+    }
+
+#define _IMPLEMENT_STRNCMP_TAIL(type, str1, str2, num) \
         num--; \
         if ((num == 0) || (*str1 == 0)) { \
             return 0; \
@@ -161,6 +173,16 @@
     } \
     return (*(const type*)str1 - *(const type*)str2); \
 }
+
+#define _IMPLEMENT_STRNCMP(type, str1, str2, num) \
+    _IMPLEMENT_STRNCMP_HEAD(type, str1, str2, num) \
+    while (*str1 == *str2) { \
+    _IMPLEMENT_STRNCMP_TAIL(type, str1, str2, num)
+
+#define _IMPLEMENT_STRNICMP(type, str1, str2, num, tolower) \
+    _IMPLEMENT_STRNCMP_HEAD(type, str1, str2, num) \
+    while (tolower(*str1) == tolower(*str2)) { \
+    _IMPLEMENT_STRNCMP_TAIL(type, str1, str2, num)
 
 #define _IMPLEMENT_STRCPY(type, dest, src) \
 { \
