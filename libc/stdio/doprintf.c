@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../intern.h"
+#include "doprintf.h"
 
 // Partially based on a public domain code
 // http://pages.cs.wisc.edu/~klingens/files/rprintf.c

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../intern.h"
+#include "doprintf.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -10,7 +11,7 @@ static void vfprintf_helper (int character, void** outp, size_t* out_nbytes,
 {
     FILE* stream = (FILE*)*outp;
     if (__fputc(character, stream) != EOF) {
-        *retval++;
+        (*retval)++;
     }
 }
 

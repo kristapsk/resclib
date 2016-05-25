@@ -16,9 +16,6 @@
 
 #endif
 
-typedef void (*doprintf_helper_func_t)
-    (int character, void** outp, size_t* out_nbytes, int* retval);
-
 // Library functions used by other library functions should be defined here
 // with their canonical names. Weak aliases may be overriden by application.
 
@@ -49,6 +46,7 @@ int __tolower (int c);
 int __vfprintf (FILE* stream, const char* format, va_list args);
 int __vsnprintf (char* buf, size_t buf_nbytes, const char* format,
     va_list args);
+int __vsprintf (char* buf, const char* format, va_list args);
 wchar_t* __wcschr (const wchar_t* str, wchar_t c);
 size_t __wcslen (const wchar_t* str);
 int __wcsncmp (const wchar_t* str1, const wchar_t* str2, size_t num);

@@ -7,6 +7,7 @@ CFLAGS += -Wall -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_AR
 
 BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
 LIBC=$(BUILDDIR)/reclibc.a
+LIBC_UNSAFE=$(BUILDDIR)/reclibc_unsafe.a
 HELLO=$(BUILDDIR)/hello
 
 all: $(BUILDIR) libc hello
@@ -112,13 +113,20 @@ LIBC_OBJS= \
 	libc/sys/$(CPU_ARCH)-$(OS_ARCH)/crt0.o \
 	libc/unistd/read.o \
 	libc/unistd/write.o
+# Unsafe functions
+LIBC_UNSAFE_OBJS = \
+	libc/stdio/sprintf.o \
+	libc/stdio/vsprintf.o
 
 include libc/sys/${CPU_ARCH}-${OS_ARCH}/sys.mk
 
-libc: $(LIBC)
+libc: $(LIBC) $(LIBC_UNSAFE)
 $(LIBC): $(LIBC_OBJS) $(BUILDDIR)
 	$(RM) $@
 	$(AR) cq $@ $(LIBC_OBJS)
+$(LIBC_UNSAFE): $(LIBC_OBJS) $(LIBC_UNSAFE_OBJS) $(BUILDDIR)
+	$(RM) $@
+	$(AR) cq $@ $(LIBC_OBJS) $(LIBC_UNSAFE_OBJS)
 
 hello: $(HELLO)
 $(HELLO): $(LIBC) examples/hello.o
