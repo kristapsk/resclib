@@ -79,7 +79,6 @@ LIBC_OBJS= \
 	libc/string/strcat.o \
 	libc/string/strchr.o \
 	libc/string/strcmp.o \
-	libc/string/strcpy.o \
 	libc/string/stricmp.o \
 	libc/string/strlen.o \
 	libc/string/strncat.o \
@@ -94,7 +93,6 @@ LIBC_OBJS= \
 	libc/string/wcscat.o \
 	libc/string/wcschr.o \
 	libc/string/wcscmp.o \
-	libc/string/wcscpy.o \
 	libc/string/wcslen.o \
 	libc/string/wcsncat.o \
 	libc/string/wcsncmp.o \
@@ -117,7 +115,9 @@ LIBC_OBJS= \
 # Unsafe functions
 LIBC_UNSAFE_OBJS = \
 	libc/stdio/sprintf.o \
-	libc/stdio/vsprintf.o
+	libc/stdio/vsprintf.o \
+	libc/string/strcpy.o \
+	libc/string/wcscpy.o
 
 include libc/sys/${CPU_ARCH}-${OS_ARCH}/sys.mk
 

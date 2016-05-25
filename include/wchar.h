@@ -35,6 +35,9 @@ wchar_t* wmemset (wchar_t* dest, wchar_t c, size_t num);
 
 #ifdef _RECLIB_SOURCE
     wchar_t* wcsrev (wchar_t* str);
+#else
+// unsafe
+    wchar_t* wcscpy (wchar_t* destination, const wchar_t* source);
 #endif
 
 #ifdef __cplusplus
