@@ -9,8 +9,9 @@ BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
 LIBC=$(BUILDDIR)/reclibc.a
 LIBC_UNSAFE=$(BUILDDIR)/reclibc_unsafe.a
 HELLO=$(BUILDDIR)/hello
+TESTS=$(BUILDDIR)/tests
 
-all: $(BUILDIR) libc hello
+all: $(BUILDIR) libc hello $(TESTS)
 
 .c.o:
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -128,6 +129,13 @@ $(LIBC_UNSAFE): $(LIBC_OBJS) $(LIBC_UNSAFE_OBJS) $(BUILDDIR)
 	$(RM) $@
 	$(AR) cq $@ $(LIBC_OBJS) $(LIBC_UNSAFE_OBJS)
 
+TEST_OBJS = \
+	third-party/seatest/src/seatest.o \
+	tests/test_all.o \
+	tests/test_string.o
+$(TESTS): $(LIBC_UNSAFE) $(TEST_OBJS)
+	$(LINK) $(LINK_OPTS) -o $@ $(TEST_OBJS) $(LIBC_UNSAFE)
+
 hello: $(HELLO)
 $(HELLO): $(LIBC) examples/hello.o
 	$(LINK) $(LINK_OPTS) -o $@ examples/hello.o $(LIBC)
@@ -135,5 +143,7 @@ $(HELLO): $(LIBC) examples/hello.o
 clean:
 	$(RM) $(LIBC)
 	$(RM) $(LIBC_OBJS)
+	$(RM) $(LIBC_UNSAFE_OBJS)
+	$(RM) $(TESTS) $(TEST_OBJS)
 	$(RM) $(HELLO) examples/hello.o
 

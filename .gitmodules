@@ -1,0 +1,3 @@
+[submodule "third-party/seatest"]
+	path = third-party/seatest
+	url = https://github.com/kristapsk/seatest
