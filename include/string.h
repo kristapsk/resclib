@@ -21,10 +21,12 @@ size_t strspn (const char* str1, const char* str2);
 char* strstr (char* str1, const char* str2 );
 
 #ifdef _RECLIB_SOURCE
-    char* strcpy (char* destination, const char* source);
     char* strrev (char* str);
     int _stricmp (const char* str1, const char* str2);
     int _strnicmp (const char* str1, const char* str2, size_t num);
+#else
+// unsafe
+    char* strcpy (char* destination, const char* source);
 #endif
 
 #ifdef __cplusplus
