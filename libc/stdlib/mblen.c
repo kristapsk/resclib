@@ -18,7 +18,7 @@ int __mblen (const char* pmb, size_t max)
     }
 
     int len = 0;
-    if (*pmb < 0x80) {
+    if ((unsigned char)*pmb < 0x80) {
         len = 1;
     }
     else if ((*pmb & 0xE0) == 0xC0) {

@@ -41,7 +41,7 @@ char* __strchr (const char* str, int c);
 size_t __strlen (const char* str);
 int __strncmp (const char* str1, const char* str2, size_t num);
 char* __strrev (char* str);
-char* __strstr (char* str1, const char* str2);
+char* __strstr (const char* str1, const char* str2);
 int __tolower (int c);
 int __vfprintf (FILE* stream, const char* format, va_list args);
 int __vsnprintf (char* buf, size_t buf_nbytes, const char* format,
