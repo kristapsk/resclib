@@ -76,7 +76,6 @@ LIBC_OBJS= \
 	libc/string/memmove.o \
 	libc/string/memmove_s.o \
 	libc/string/memset.o \
-	libc/string/strcat.o \
 	libc/string/strchr.o \
 	libc/string/strcmp.o \
 	libc/string/stricmp.o \
@@ -90,7 +89,6 @@ LIBC_OBJS= \
 	libc/string/strspn.o \
 	libc/string/strstr.o \
 	libc/string/wcopy.o \
-	libc/string/wcscat.o \
 	libc/string/wcschr.o \
 	libc/string/wcscmp.o \
 	libc/string/wcslen.o \
@@ -116,7 +114,9 @@ LIBC_OBJS= \
 LIBC_UNSAFE_OBJS = \
 	libc/stdio/sprintf.o \
 	libc/stdio/vsprintf.o \
+	libc/string/strcat.o \
 	libc/string/strcpy.o \
+	libc/string/wcscat.o \
 	libc/string/wcscpy.o
 
 include libc/sys/${CPU_ARCH}-${OS_ARCH}/sys.mk
