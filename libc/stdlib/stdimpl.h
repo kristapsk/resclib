@@ -3,6 +3,7 @@
 
 #include "../intern.h"
 #include <limits.h>
+#include <stdlib.h>
 
 // This is a well known bithack for abs() to avoid branching.
 // http://graphics.stanford.edu/~seander/bithacks.html#IntegerAbs
@@ -11,6 +12,14 @@
     type mask = x >> (sizeof(type) * CHAR_BIT - 1); \
     return (x + mask) ^ mask; \
 } 
+
+#define _IMPLEMENT_DIV(type, numer, denom) \
+{ \
+    type res; \
+    res.quot = numer / denom; \
+    res.rem = numer % denom; \
+    return res; \
+}
 
 #define _IMPLEMENT_UITOA_S_BASE(itype, value, otype, dest, dest_nbytes, radix) \
     const otype convtable[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"; \

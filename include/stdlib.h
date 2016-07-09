@@ -4,8 +4,30 @@
 #include <limits.h>
 #include <stddef.h>
 
+#ifdef _RECLIB_SOURCE
+    #include <___int.h>
+    #include <_errno_t.h>
+#endif
+
 #define EXIT_SUCCESS    (0)
 #define EXIT_FAILURE    (1)
+
+typedef struct {
+    int quot;
+    int rem;
+} div_t;
+
+typedef struct {
+    long quot;
+    long rem;
+} ldiv_t;
+
+#if (__STDC_VERSION__ >= 199901L)
+    typedef struct {
+        long long quot;
+        long long rem;
+    } lldiv_t;
+#endif
 
 #define __min(x,y) \
     ({ \
@@ -38,26 +60,35 @@
 extern "C" {
 #endif
 
-void _Exit (int status);
-
-int abs (int x);
-long labs (long x);
-long long llabs (long long x);
-
-int mblen (const char* pmb, size_t max);
-
+/*** String conversions ****************************************************/
 #ifdef _RECLIB_SOURCE
-    #include <___int.h>
-    #include <_errno_t.h>
-
-    errno_t _get_errno (int* pvalue);
-    errno_t _set_errno (int value);
-
     errno_t _itoa_s (int value, char* dest, size_t dest_nbytes, int radix);
     errno_t _i64toa_s (__int64 value, char* dest,
         size_t dest_nbytes, int radix);
     errno_t _ui64toa_s (unsigned __int64 value, char* dest,
         size_t dest_nbytes, int radix);
+#endif
+
+/*** Environment ***********************************************************/
+void _Exit (int status);
+
+/*** Integer arithmetics ***************************************************/
+int abs (int x);
+div_t div (int numer, int denom);
+long labs (long x);
+ldiv_t ldiv (long numer, long denom);
+long long llabs (long long x);
+#if (__STDC_VERSION__ >= 199901L)
+    lldiv_t lldiv (long long numer, long long denom);
+#endif
+
+/*** Multibyte characters **************************************************/
+int mblen (const char* pmb, size_t max);
+
+/*** Misc ******************************************************************/
+#ifdef _RECLIB_SOURCE
+    errno_t _get_errno (int* pvalue);
+    errno_t _set_errno (int value);
 #endif
 
 #ifdef __cplusplus

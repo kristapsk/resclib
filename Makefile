@@ -3,7 +3,7 @@ include config.mk
 
 include mkfiles/${CPU_ARCH}.mk
 
-CFLAGS += -Wall -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_ARCH) -fno-stack-protector 
+CFLAGS += -std=gnu11 -Wall -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_ARCH) -fno-stack-protector 
 
 BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
 LIBC=$(BUILDDIR)/reclibc.a
@@ -60,11 +60,14 @@ LIBC_OBJS= \
 	libc/stdio/vprintf.o \
 	libc/stdio/vsnprintf.o \
 	libc/stdlib/abs.o \
+	libc/stdlib/div.o \
 	libc/stdlib/errno.o \
 	libc/stdlib/i64toa_s.o \
 	libc/stdlib/itoa_s.o \
 	libc/stdlib/labs.o \
+	libc/stdlib/ldiv.o \
 	libc/stdlib/llabs.o \
+	libc/stdlib/lldiv.o \
 	libc/stdlib/mblen.o \
 	libc/stdlib/ui64toa_s.o \
 	libc/string/bcopy.o \
