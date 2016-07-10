@@ -150,6 +150,9 @@ try_next:
                 else if (space_flag && num >= 0) {
                     outchar(' ', &outp, &nbytes, &retval);
                 }
+                if ((precision_num > width_num) && (precision_num < INT_MAX)) {
+                    width_num = precision_num;
+                }
                 outstring(numbuf, left_flag, pad_char, width_num, INT_MAX,
                     &outp, &nbytes, &retval, outchar);
                 continue;

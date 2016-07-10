@@ -16,7 +16,9 @@ static void vsprintf_helper (int character, void** outp, size_t* out_nbytes,
 
 int __vsprintf (char* buf, const char* format, va_list args)
 {
-    return __doprintf(buf, 0, format, args, vsprintf_helper);
+    int num = __doprintf(buf, 0, format, args, vsprintf_helper);
+    buf[num++] = '\0';
+    return num;
 }
 
 int vsprintf (char* buf, const char* format, va_list args)
