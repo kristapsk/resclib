@@ -1,5 +1,4 @@
-#CPU_ARCH=x86_64
-CPU_ARCH=i386
+CPU_ARCH=x86_64
 #OS_ARCH=none
 OS_ARCH=linux
 
