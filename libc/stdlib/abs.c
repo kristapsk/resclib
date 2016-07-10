@@ -13,11 +13,3 @@ int abs (int x)
 #ifdef __cplusplus
 }
 #endif
-
-// TODO test:
-//  abs(0) == 0
-//  abs(1) > 0
-//  abs(INT_MAX) > 0
-//  abs(-1) < 0
-//  abs(INT_MIN) < 0
-
