@@ -37,8 +37,12 @@ int vsnprintf (char* buf, size_t buf_nbytes, const char* format,
 #endif
 
 /*** Character input/output ************************************************/
+int fgetc (FILE* stream);
+char* fgets (char* str, int num, FILE* stream);
 int fputc (int character, FILE* stream);
 int fputs (const char* str, FILE* stream);
+int getc (FILE* stream);
+int getchar (void);
 int putc (int character, FILE* stream);
 int putchar (int character);
 int puts (const char* str);

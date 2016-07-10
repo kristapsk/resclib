@@ -49,9 +49,12 @@ LIBC_OBJS= \
 	libc/stdio/doprintf.o \
 	libc/stdio/feof.o \
 	libc/stdio/ferror.o \
+	libc/stdio/fgetc.o \
+	libc/stdio/fgets.o \
 	libc/stdio/fprintf.o \
 	libc/stdio/fputc.o \
 	libc/stdio/fputs.o \
+	libc/stdio/getchar.o \
 	libc/stdio/printf.o \
 	libc/stdio/putchar.o \
 	libc/stdio/puts.o \

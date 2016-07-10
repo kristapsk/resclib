@@ -29,6 +29,7 @@ int __abs (int x);
 errno_t __asctime_s (char* buf, size_t buf_nbytes, const struct tm* timeptr);
 void __bzero (void* dest, size_t nbytes);
 div_t __div (int numer, int denom);
+int __fgetc (FILE* stream);
 int __fputc (int character, FILE* stream);
 int __fputs (const char* str, FILE* stream);
 errno_t __gmtime_s (const time_t* timer, struct tm* result);
