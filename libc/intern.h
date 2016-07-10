@@ -7,6 +7,8 @@
 #include <_ssize_t.h>
 #include <stddef.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #ifdef __GNUC__
 
@@ -24,19 +26,24 @@ extern "C" {
 #endif
 
 int __abs (int x);
-long long __llabs (long long x);
+errno_t __asctime_s (char* buf, size_t buf_nbytes, const struct tm* timeptr);
 void __bzero (void* dest, size_t nbytes);
+div_t __div (int numer, int denom);
 int __fputc (int character, FILE* stream);
 int __fputs (const char* str, FILE* stream);
+errno_t __gmtime_s (const time_t* timer, struct tm* result);
 int __isalnum (int c);
 int __isalpha (int c);
 int __isdigit (int c);
 int __isgraph (int c);
 errno_t ___itoa_s (int value, char* dest, size_t dest_nbytes, int radix);
+long long __llabs (long long x);
+lldiv_t __lldiv (long long numer, long long denom);
 void* __memcpy (void* dest, const void* source, size_t nbytes);
 void* __memmove (void* dest, const void* source, size_t nbytes);
 void* __memset (void* dest, int c, size_t nbytes);
 errno_t ___set_errno (int value);
+int __snprintf (char* buf, size_t buf_nbytes, const char* format, ...);
 char* __strchr (const char* str, int c);
 size_t __strlen (const char* str);
 int __strncmp (const char* str1, const char* str2, size_t num);

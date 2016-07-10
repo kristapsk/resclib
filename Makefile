@@ -111,6 +111,10 @@ LIBC_OBJS= \
 	libc/string/wmemset.o \
 	libc/string/wzero.o \
 	libc/sys/$(CPU_ARCH)-$(OS_ARCH)/crt0.o \
+	libc/time/asctime_s.o \
+	libc/time/difftime.o \
+	libc/time/gmtime_s.o \
+	libc/time/time.o \
 	libc/unistd/read.o \
 	libc/unistd/write.o
 # Unsafe functions
@@ -120,7 +124,9 @@ LIBC_UNSAFE_OBJS = \
 	libc/string/strcat.o \
 	libc/string/strcpy.o \
 	libc/string/wcscat.o \
-	libc/string/wcscpy.o
+	libc/string/wcscpy.o \
+	libc/time/asctime.o \
+	libc/time/gmtime.o
 
 include libc/sys/${CPU_ARCH}-${OS_ARCH}/sys.mk
 
@@ -135,13 +141,14 @@ $(LIBC_UNSAFE): $(LIBC_OBJS) $(LIBC_UNSAFE_OBJS) $(BUILDDIR)
 TEST_OBJS = \
 	third-party/seatest/src/seatest.o \
 	tests/test_all.o \
-	tests/test_string.o
+	tests/test_string.o \
+	tests/test_time.o
 $(TESTS): $(LIBC_UNSAFE) $(TEST_OBJS)
-	$(LINK) $(LINK_OPTS) -o $@ $(TEST_OBJS) $(LIBC_UNSAFE)
+	$(LINK) $(LINK_OPTS) -o $@ $(TEST_OBJS) $(LIBC_UNSAFE) $(COMPILER_LIB)
 
 hello: $(HELLO)
 $(HELLO): $(LIBC) examples/hello.o
-	$(LINK) $(LINK_OPTS) -o $@ examples/hello.o $(LIBC)
+	$(LINK) $(LINK_OPTS) -o $@ examples/hello.o $(LIBC) $(COMPILER_LIB)
 
 clean:
 	$(RM) $(LIBC)
