@@ -9,9 +9,10 @@ BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
 LIBC=$(BUILDDIR)/reclibc.a
 LIBC_UNSAFE=$(BUILDDIR)/reclibc_unsafe.a
 HELLO=$(BUILDDIR)/hello
+SMALLEST=$(BUILDDIR)/smallest
 TESTS=$(BUILDDIR)/tests
 
-all: $(BUILDIR) libc hello $(TESTS)
+all: $(BUILDIR) libc hello smallest $(TESTS)
 
 .c.o:
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -153,6 +154,10 @@ $(TESTS): $(LIBC_UNSAFE) $(TEST_OBJS)
 hello: $(HELLO)
 $(HELLO): $(LIBC) examples/hello.o
 	$(LINK) $(LINK_OPTS) -o $@ examples/hello.o $(LIBC) $(COMPILER_LIB)
+
+smallest: $(SMALLEST)
+$(SMALLEST): $(LIBC) examples/smallest.o
+	$(LINK) $(LINK_OPTS) -o $@ examples/smallest.o $(LIBC) $(COMPILER_LIB)
 
 clean:
 	$(RM) $(LIBC)
