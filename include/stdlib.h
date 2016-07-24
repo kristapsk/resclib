@@ -4,7 +4,7 @@
 #include <limits.h>
 #include <stddef.h>
 
-#ifdef _RECLIB_SOURCE
+#ifdef _RESCLIB_SOURCE
     #include <___int.h>
     #include <_errno_t.h>
 #endif
@@ -44,7 +44,7 @@ typedef struct {
         __x > __y ? __x : __y; \
     })
 
-#ifdef _RECLIB_SOURCE
+#ifdef _RESCLIB_SOURCE
 
     #ifdef __cplusplus
         template <typename T, size_t N> inline size_t _countof
@@ -61,7 +61,7 @@ extern "C" {
 #endif
 
 /*** String conversions ****************************************************/
-#ifdef _RECLIB_SOURCE
+#ifdef _RESCLIB_SOURCE
     errno_t _itoa_s (int value, char* dest, size_t dest_nbytes, int radix);
     errno_t _i64toa_s (__int64 value, char* dest,
         size_t dest_nbytes, int radix);
@@ -86,7 +86,7 @@ long long llabs (long long x);
 int mblen (const char* pmb, size_t max);
 
 /*** Misc ******************************************************************/
-#ifdef _RECLIB_SOURCE
+#ifdef _RESCLIB_SOURCE
     errno_t _get_errno (int* pvalue);
     errno_t _set_errno (int value);
 #endif

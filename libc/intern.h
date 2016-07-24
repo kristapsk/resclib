@@ -1,7 +1,7 @@
 #ifndef __INTERN_H
 #define __INTERN_H
 
-#define _RECLIB_SOURCE
+#define _RESCLIB_SOURCE
 
 #include <_errno_t.h>
 #include <_ssize_t.h>

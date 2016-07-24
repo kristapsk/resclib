@@ -1,6 +1,6 @@
 #include "../intern.h"
 #include "stdimpl.h"
-#define _RECLIB_SOURCE
+#define _RESCLIB_SOURCE
 #include <errno.h>
 
 #ifdef __cplusplus

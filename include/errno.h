@@ -1,7 +1,7 @@
 #ifndef _ERRNO_H
 #define _ERRNO_H
 
-#ifdef _RECLIB_SOURCE
+#ifdef _RESCLIB_SOURCE
     #include <_errno_t.h>
 #endif
 

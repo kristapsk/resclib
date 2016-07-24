@@ -20,7 +20,7 @@ char* strpbrk (const char* str1, const char* str2);
 size_t strspn (const char* str1, const char* str2);
 char* strstr (const char* str1, const char* str2 );
 
-#ifdef _RECLIB_SOURCE
+#ifdef _RESCLIB_SOURCE
     char* strrev (char* str);
     int _stricmp (const char* str1, const char* str2);
     int _strnicmp (const char* str1, const char* str2, size_t num);

@@ -27,7 +27,7 @@ int isxdigit (int c);
 /*** Character conversion functions ****************************************/
 int tolower (int c);
 int toupper (int c);
-#if defined(_RECLIB_SOURCE) || defined(_XOPEN_SOURCE)
+#if defined(_RESCLIB_SOURCE) || defined(_XOPEN_SOURCE)
     #define _tolower(c) (c | 0x20)
     #define _toupper(c) (c & ~0x20)
 #endif

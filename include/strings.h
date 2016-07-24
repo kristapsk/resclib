@@ -13,9 +13,9 @@ int strcasecmp (const char* str1, const char* str2);
 int strncasecmp (const char* str1, const char* str2, size_t num);
 
 // Extensions
-#if defined(_RECLIB_SOURCE)
-void wcopy (const wchar_t* ptr1, wchar_t* ptr2, size_t num); 
-void wzero (wchar_t* dest, size_t num);
+#if defined(_RESCLIB_SOURCE)
+    void wcopy (const wchar_t* ptr1, wchar_t* ptr2, size_t num); 
+    void wzero (wchar_t* dest, size_t num);
 #endif
 
 #ifdef __cplusplus

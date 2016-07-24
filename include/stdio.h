@@ -31,7 +31,7 @@ int vprintf (const char* format, va_list args);
 int vsnprintf (char* buf, size_t buf_nbytes, const char* format,
     va_list args);
 // unsafe
-#ifndef _RECLIB_SOURCE
+#ifndef _RESCLIB_SOURCE
     int vsprintf (char* buf, const char* format, va_list args);
     int sprintf (char* buf, const char* format, ...);
 #endif

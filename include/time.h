@@ -26,10 +26,12 @@ double difftime (time_t end, time_t beginning);
 time_t time (time_t* timer);
 
 /*** Conversion ************************************************************/
-#ifndef _RECLIB_SOURCE
+#ifndef _RESCLIB_SOURCE
+    // unsafe
     char* asctime (const struct tm* timeptr);
     struct tm* gmtime (const time_t* timer);
 #endif
+
 #if (__STDC_VERSION__ >= 201112L)
     #include <_errno_t.h>
     errno_t asctime_s (char* buf, size_t buf_nbytes,

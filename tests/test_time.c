@@ -1,6 +1,6 @@
-#define _RECLIB_SOURCE
+#define _RESCLIB_SOURCE
 #include <stdlib.h>
-#undef _RECLIB_SOURCE
+#undef _RESCLIB_SOURCE
 #include <string.h>
 #include <time.h>
 #include "seatest.h"

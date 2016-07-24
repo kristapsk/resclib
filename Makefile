@@ -6,8 +6,8 @@ include mkfiles/${CPU_ARCH}.mk
 CFLAGS += -std=gnu11 -Wall -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_ARCH) -fno-stack-protector 
 
 BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
-LIBC=$(BUILDDIR)/reclibc.a
-LIBC_UNSAFE=$(BUILDDIR)/reclibc_unsafe.a
+LIBC=$(BUILDDIR)/resclibc.a
+LIBC_UNSAFE=$(BUILDDIR)/resclibc_unsafe.a
 HELLO=$(BUILDDIR)/hello
 SMALLEST=$(BUILDDIR)/smallest
 TESTS=$(BUILDDIR)/tests

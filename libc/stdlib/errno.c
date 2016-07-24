@@ -1,4 +1,4 @@
-#define _RECLIB_SOURCE
+#define _RESCLIB_SOURCE
 #include <errno.h>
 #include <stdlib.h>
 #include "../intern.h"
