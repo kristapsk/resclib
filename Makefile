@@ -38,6 +38,8 @@ LIBC_OBJS= \
 	libc/ctype/toascii.o \
 	libc/ctype/tolower.o \
 	libc/ctype/toupper.o \
+	libc/locale/locale.o \
+	libc/locale/setlocale.o \
 	libc/math/fabs.o \
 	libc/math/fabsf.o \
 	libc/math/fabsl.o \
@@ -147,6 +149,7 @@ $(LIBC_UNSAFE): $(LIBC_OBJS) $(LIBC_UNSAFE_OBJS) $(BUILDDIR)
 TEST_OBJS = \
 	third-party/seatest/src/seatest.o \
 	tests/test_all.o \
+	tests/test_locale.o \
 	tests/test_stdlib.o \
 	tests/test_string.o \
 	tests/test_time.o

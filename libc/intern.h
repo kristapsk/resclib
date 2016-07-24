@@ -46,6 +46,7 @@ void* __memset (void* dest, int c, size_t nbytes);
 errno_t ___set_errno (int value);
 int __snprintf (char* buf, size_t buf_nbytes, const char* format, ...);
 char* __strchr (const char* str, int c);
+int __strcmp (const char* str1, const char* str2);
 size_t __strlen (const char* str);
 int __strncmp (const char* str1, const char* str2, size_t num);
 char* __strrev (char* str);
