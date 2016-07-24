@@ -43,6 +43,7 @@ lldiv_t __lldiv (long long numer, long long denom);
 void* __memcpy (void* dest, const void* source, size_t nbytes);
 void* __memmove (void* dest, const void* source, size_t nbytes);
 void* __memset (void* dest, int c, size_t nbytes);
+ssize_t __read (int fd, void* buf, size_t nbytes);
 errno_t ___set_errno (int value);
 int __snprintf (char* buf, size_t buf_nbytes, const char* format, ...);
 char* __strchr (const char* str, int c);
