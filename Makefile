@@ -24,6 +24,7 @@ LIBC_OBJS= \
 	libc/init.o \
 	libc/ctype/isalnum.o \
 	libc/ctype/isalpha.o \
+	libc/ctype/isascii.o \
 	libc/ctype/isblank.o \
 	libc/ctype/iscntrl.o \
 	libc/ctype/isdigit.o \
@@ -34,6 +35,7 @@ LIBC_OBJS= \
 	libc/ctype/isspace.o \
 	libc/ctype/isupper.o \
 	libc/ctype/isxdigit.o \
+	libc/ctype/toascii.o \
 	libc/ctype/tolower.o \
 	libc/ctype/toupper.o \
 	libc/math/fabs.o \

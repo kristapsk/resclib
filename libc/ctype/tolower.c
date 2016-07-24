@@ -1,4 +1,5 @@
 #include "../intern.h"
+#include <ctype.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -6,12 +7,7 @@ extern "C" {
 
 int __tolower (int c)
 {
-    if (__isalpha(c)) {
-        return (c | 0x20);
-    }
-    else {
-        return c;
-    }
+    return (__isalpha(c) ? _tolower(c) : c);
 }
 
 int tolower (int c) \
