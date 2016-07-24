@@ -1,7 +1,6 @@
 #define _RESCLIB_SOURCE
 #include <stdlib.h>
 #undef _RESCLIB_SOURCE
-#include <string.h>
 #include <time.h>
 #include "seatest.h"
 
@@ -23,7 +22,7 @@ static void test_gmtime_asctime (void)
         gmtime_s(&(timestamps[i]), &t);
         char buf[26];
         asctime_s(buf, sizeof(buf), &t);
-        assert_int_equal(0, strcmp(buf, timestamp_strings[i]));
+        assert_string_equal(timestamp_strings[i], buf);
     }
 }
 
