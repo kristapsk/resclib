@@ -6,6 +6,7 @@ include mkfiles/${CPU_ARCH}.mk
 CFLAGS += -std=gnu11 -Wall -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_ARCH) -fno-stack-protector 
 
 BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
+CRT0=$(BUILDDIR)/crt0.o
 LIBC=$(BUILDDIR)/resclibc.a
 LIBC_UNSAFE=$(BUILDDIR)/resclibc_unsafe.a
 HELLO=$(BUILDDIR)/hello
@@ -20,6 +21,7 @@ all: $(BUILDIR) libc hello smallest $(TESTS)
 $(BUILDDIR):
 	$(MKDIR) $(BUILDDIR)
 
+CRT0_OBJ = libc/sys/$(CPU_ARCH)-$(OS_ARCH)/crt0.o
 LIBC_OBJS= \
 	libc/init.o \
 	libc/ctype/isalnum.o \
@@ -118,7 +120,6 @@ LIBC_OBJS= \
 	libc/string/wmemmove_s.o \
 	libc/string/wmemset.o \
 	libc/string/wzero.o \
-	libc/sys/$(CPU_ARCH)-$(OS_ARCH)/crt0.o \
 	libc/time/asctime_s.o \
 	libc/time/difftime.o \
 	libc/time/gmtime_s.o \
@@ -138,7 +139,9 @@ LIBC_UNSAFE_OBJS = \
 
 include libc/sys/${CPU_ARCH}-${OS_ARCH}/sys.mk
 
-libc: $(LIBC) $(LIBC_UNSAFE)
+libc: $(LIBC) $(LIBC_UNSAFE) $(CRT0)
+$(CRT0): $(CRT0_OBJ) $(BUILDDIR)
+	$(COPY) $(CRT0_OBJ) $(CRT0)
 $(LIBC): $(LIBC_OBJS) $(BUILDDIR)
 	$(RM) $@
 	$(AR) cq $@ $(LIBC_OBJS)
@@ -153,21 +156,24 @@ TEST_OBJS = \
 	tests/test_stdlib.o \
 	tests/test_string.o \
 	tests/test_time.o
-$(TESTS): $(LIBC_UNSAFE) $(TEST_OBJS)
-	$(LINK) $(LINK_OPTS) -o $@ $(TEST_OBJS) $(LIBC_UNSAFE) $(COMPILER_LIB)
+$(TESTS): $(LIBC_UNSAFE) $(TEST_OBJS) $(CRT0)
+	$(LINK) $(LINK_OPTS) -o $@ $(TEST_OBJS) $(CRT0) $(LIBC_UNSAFE) $(COMPILER_LIB)
 
 hello: $(HELLO)
-$(HELLO): $(LIBC) examples/hello.o
-	$(LINK) $(LINK_OPTS) -o $@ examples/hello.o $(LIBC) $(COMPILER_LIB)
+$(HELLO): $(LIBC) $(CRT0) examples/hello.o
+	$(LINK) $(LINK_OPTS) -o $@ examples/hello.o $(CRT0) $(LIBC) $(COMPILER_LIB)
 
 smallest: $(SMALLEST)
-$(SMALLEST): $(LIBC) examples/smallest.o
-	$(LINK) $(LINK_OPTS) -o $@ examples/smallest.o $(LIBC) $(COMPILER_LIB)
+$(SMALLEST): $(LIBC) $(CRT0) examples/smallest.o
+	$(LINK) $(LINK_OPTS) -o $@ examples/smallest.o $(CRT0) $(LIBC) $(COMPILER_LIB)
 
 clean:
+	$(RM) $(CRT0)
+	$(RM) $(CRT0_OBJ)
 	$(RM) $(LIBC)
 	$(RM) $(LIBC_OBJS)
 	$(RM) $(LIBC_UNSAFE_OBJS)
 	$(RM) $(TESTS) $(TEST_OBJS)
 	$(RM) $(HELLO) examples/hello.o
+	$(RM) $(SMALLEST) examples/smallest.o
 
