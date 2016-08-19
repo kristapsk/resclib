@@ -8,6 +8,7 @@ AR=$(TCHAIN_PREFIX)ar
 LINK=$(TCHAIN_PREFIX)ld
 RM=rm -f
 MKDIR=mkdir -p
+COPY=cp
 
 # This may be needed for some architectures, for example i386.
 # Configure this, if you have errors like this when building examples, tests:
