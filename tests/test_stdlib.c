@@ -4,10 +4,10 @@
 static void test_abs (void)
 {
     // abs
-    assert_true(abs(0) == 0);
-    assert_true(abs(1) == 1);
-    assert_true(abs(INT_MAX) == INT_MAX);
-    assert_true(abs(-1) == 1);
+    assert_int_equal(0, abs(0));
+    assert_int_equal(1, abs(1));
+    assert_int_equal(INT_MAX, abs(INT_MAX));
+    assert_int_equal(1, abs(-1));
     // labs
     assert_true(labs(0) == 0);
     assert_true(labs(1) == 1);
