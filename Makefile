@@ -95,18 +95,19 @@ LIBC_OBJS= \
 	libc/string/strlen.o \
 	libc/string/strncat.o \
 	libc/string/strncmp.o \
+	libc/string/strncpy.o \
 	libc/string/strnicmp.o \
 	libc/string/strpbrk.o \
 	libc/string/strrchr.o \
 	libc/string/strrev.o \
 	libc/string/strspn.o \
 	libc/string/strstr.o \
-	libc/string/wcopy.o \
 	libc/string/wcschr.o \
 	libc/string/wcscmp.o \
 	libc/string/wcslen.o \
 	libc/string/wcsncat.o \
 	libc/string/wcsncmp.o \
+	libc/string/wcsncpy.o \
 	libc/string/wcspbrk.o \
 	libc/string/wcsrchr.o \
 	libc/string/wcsrev.o \

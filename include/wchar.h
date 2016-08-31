@@ -37,6 +37,7 @@ wchar_t* wmemset (wchar_t* dest, wchar_t c, size_t num);
     wchar_t* wcsrev (wchar_t* str);
 #else
 // unsafe
+    wchar_t* wcscat (wchar_t* dest, const wchar_t* src);
     wchar_t* wcscpy (wchar_t* destination, const wchar_t* source);
 #endif
 

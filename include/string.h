@@ -26,6 +26,7 @@ char* strstr (const char* str1, const char* str2 );
     int _strnicmp (const char* str1, const char* str2, size_t num);
 #else
 // unsafe
+    char* strcat (char* dest, const char* src);
     char* strcpy (char* destination, const char* source);
 #endif
 
