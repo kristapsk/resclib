@@ -1,5 +1,6 @@
 #include "seatest.h"
 
+extern void test_ctype (void);
 extern void test_locale (void);
 extern void test_stdlib (void);
 extern void test_string (void);
@@ -7,6 +8,7 @@ extern void test_time (void);
 
 void all_tests (void)
 {
+    test_ctype();
     test_locale();
     test_stdlib();
     test_string();
