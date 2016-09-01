@@ -154,6 +154,7 @@ TEST_OBJS = \
 	third-party/seatest/src/seatest.o \
 	tests/test_all.o \
 	tests/test_ctype.o \
+	tests/test_errno.o \
 	tests/test_locale.o \
 	tests/test_stdlib.o \
 	tests/test_string.o \

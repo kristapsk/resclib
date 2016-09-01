@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-static __thread int _errno = 0;
+static /*__thread*/ int _errno;
 
 int* __errno_location (void)
 {
