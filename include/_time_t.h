@@ -1,5 +1,5 @@
-#ifndef __CLOCK_T_H
-#define __CLOCK_T_H
+#ifndef __TIME_T_H
+#define __TIME_T_H
 
 #include <___int.h>
 

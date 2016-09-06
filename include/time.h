@@ -1,6 +1,7 @@
 #ifndef _TIME_H
 #define _TIME_H
 
+#include <_clock_t.h>
 #include <_null.h>
 #include <_size_t.h>
 #include <_time_t.h>
@@ -22,6 +23,7 @@ extern "C" {
 #endif
 
 /*** Time manipulation *****************************************************/
+clock_t clock (void);
 double difftime (time_t end, time_t beginning);
 time_t time (time_t* timer);
 
@@ -38,6 +40,9 @@ time_t time (time_t* timer);
         const struct tm* timeptr);
     errno_t gmtime_s (const time_t* timer, struct tm* result);
 #endif
+
+/*** Macro constants *******************************************************/
+#define CLOCKS_PER_SEC (1000000)
 
 #ifdef __cplusplus
 }
