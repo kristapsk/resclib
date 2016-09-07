@@ -136,6 +136,7 @@ LIBC_UNSAFE_OBJS = \
 	libc/string/wcscat.o \
 	libc/string/wcscpy.o \
 	libc/time/asctime.o \
+	libc/time/clock.o \
 	libc/time/gmtime.o
 
 include libc/sys/${CPU_ARCH}-${OS_ARCH}/sys.mk

@@ -4,6 +4,12 @@
 #include <time.h>
 #include "seatest.h"
 
+static void test_clock (void)
+{
+    assert_true(CLK_TCK == CLOCKS_PER_SEC);
+    assert_true(clock() >= -1);
+}
+
 static void test_gmtime_asctime (void)
 {
     time_t timestamps[] = {
@@ -29,6 +35,7 @@ static void test_gmtime_asctime (void)
 void test_time (void)
 {
     test_fixture_start();
+    run_test(test_clock);
     run_test(test_gmtime_asctime);
     test_fixture_end();
 }

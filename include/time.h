@@ -42,7 +42,8 @@ time_t time (time_t* timer);
 #endif
 
 /*** Macro constants *******************************************************/
-#define CLOCKS_PER_SEC (1000000)
+#define CLOCKS_PER_SEC  (time_t)(1000000)
+#define CLK_TCK         (time_t)(1000000)
 
 #ifdef __cplusplus
 }
