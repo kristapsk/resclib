@@ -1,3 +1,4 @@
+#include <inttypes.h>
 #include <stdlib.h>
 #include "seatest.h"
 
@@ -21,6 +22,12 @@ static void test_abs (void)
     assert_true(llabs(LLONG_MAX) == LLONG_MAX);
     assert_true(llabs(-1) == 1);
     assert_true(llabs(LLONG_MIN + 1) == - (LLONG_MIN + 1));
+    // imaxabs
+    assert_true(imaxabs(0) == 0);
+    assert_true(imaxabs(1) == 1);
+    assert_true(imaxabs(INTMAX_MAX) == INTMAX_MAX);
+    assert_true(imaxabs(-1) == 1);
+    assert_true(imaxabs(INTMAX_MIN + 1) == - (INTMAX_MIN + 1));
 }
 
 static void test_div (void)
@@ -63,6 +70,18 @@ static void test_div (void)
         assert_true(result.quot == -2 && result.rem == 1);
         assert_true(sizeof(result.quot) == sizeof(long long));
         assert_true(sizeof(result.rem) == sizeof(long long));
+    }
+    // imaxdiv
+    {
+        imaxdiv_t result;
+        result = imaxdiv(5, 2);
+        assert_true(result.quot == 2 && result.rem == 1);
+        result = imaxdiv(-5, 2);
+        assert_true(result.quot == -2 && result.rem == -1);
+        result = imaxdiv(5, -2);
+        assert_true(result.quot == -2 && result.rem == 1);
+        assert_true(sizeof(result.quot) == sizeof(intmax_t));
+        assert_true(sizeof(result.rem) == sizeof(intmax_t));
     }
 }
 

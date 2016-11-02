@@ -14,6 +14,9 @@ typedef unsigned __int32 uint32_t;
 typedef signed __int64 int64_t;
 typedef unsigned __int64 uint64_t;
 
+typedef int64_t intmax_t;
+typedef uint64_t uintmax_t;
+
 #define INT8_MIN _INT8_MIN
 #define INT8_MAX _INT8_MAX
 #define UINT8_MAX _UINT8_MAX
@@ -26,5 +29,9 @@ typedef unsigned __int64 uint64_t;
 #define INT64_MIN _INT64_MIN
 #define INT64_MAX _INT64_MAX
 #define UINT64_MAX _UINT64_MAX
+
+#define INTMAX_MIN INT64_MIN
+#define INTMAX_MAX INT64_MAX
+#define UINTMAX_MAX UINT64_MAX
 
 #endif
