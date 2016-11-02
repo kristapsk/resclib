@@ -61,8 +61,8 @@ static void test_div (void)
         assert_true(result.quot == -2 && result.rem == -1);
         result = lldiv(5, -2);
         assert_true(result.quot == -2 && result.rem == 1);
-        assert_true(sizeof(result.quot) == sizeof(long));
-        assert_true(sizeof(result.rem) == sizeof(long));
+        assert_true(sizeof(result.quot) == sizeof(long long));
+        assert_true(sizeof(result.rem) == sizeof(long long));
     }
 }
 
