@@ -3,7 +3,7 @@ include config.mk
 
 include mkfiles/${CPU_ARCH}.mk
 
-CFLAGS += -std=gnu11 -Wall -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_ARCH) -fno-stack-protector 
+CFLAGS += -std=gnu11 -Wall -nostdinc -I include/ -D CPU_ARCH=$(CPU_ARCH) -D OS_ARCH=$(OS_ARCH) -fno-stack-protector -fno-builtin -funsigned-char
 
 BUILDDIR=build/$(CPU_ARCH)-$(OS_ARCH)
 CRT0=$(BUILDDIR)/crt0.o
@@ -93,6 +93,7 @@ LIBC_OBJS= \
 	libc/string/memset.o \
 	libc/string/strchr.o \
 	libc/string/strcmp.o \
+	libc/string/strcspn.o \
 	libc/string/stricmp.o \
 	libc/string/strlen.o \
 	libc/string/strncat.o \
@@ -106,6 +107,7 @@ LIBC_OBJS= \
 	libc/string/strstr.o \
 	libc/string/wcschr.o \
 	libc/string/wcscmp.o \
+	libc/string/wcscspn.o \
 	libc/string/wcslen.o \
 	libc/string/wcsncat.o \
 	libc/string/wcsncmp.o \

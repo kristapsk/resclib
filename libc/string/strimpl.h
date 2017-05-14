@@ -123,15 +123,28 @@
     return NULL; \
 }
 
+#define _IMPLEMENT_STRCSPN(type, str1, str2, strchr) \
+{ \
+    const type* c_str1 = (const type*)str1; \
+    while (*str1) { \
+        if (__ ## strchr(str2, *str1)) { \
+            break; \
+        } \
+        str1++; \
+    } \
+    return (size_t)(str1 - c_str1); \
+}
+
 #define _IMPLEMENT_STRSPN(type, str1, str2, strchr) \
 { \
     const type* c_str1 = (const type*)str1; \
-    for (; *c_str1 != 0; c_str1++) { \
-        if (__ ## strchr(str2, *c_str1) != NULL) { \
+    while (*str1) { \
+        if (__ ## strchr(str2, *str1) == NULL) { \
             break; \
         } \
+        str1++; \
     } \
-    return (size_t)(c_str1 - str1); \
+    return (size_t)(str1 - c_str1); \
 }
 
 #define _IMPLEMENT_STRCMP_HEAD(type, str1, str2) \

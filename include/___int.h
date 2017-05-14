@@ -12,13 +12,11 @@
 #define _SCHAR_MIN -128
 #define _SCHAR_MAX 127
 #define _UCHAR_MAX 255
-#if ('\x80' < 0)
-    #define _CHAR_MIN -128
-    #define _CHAR_MAX 127
-#else
-    #define _CHAR_MIN 0
-    #define _CHAR_MAX 255
-#endif
+
+// We assume "char" is "unsigned char"
+#define _CHAR_MIN 0
+#define _CHAR_MAX 255
+
 #define _SHRT_MIN (-_SHRT_MAX-1)
 #define _SHRT_MAX 32767
 #define _USHRT_MAX ((unsigned short)65535U)
