@@ -125,7 +125,6 @@ LIBC_OBJS= \
 	libc/time/difftime.o \
 	libc/time/gmtime_s.o \
 	libc/time/time.o \
-	libc/unistd/getpid.o \
 	libc/unistd/read.o \
 	libc/unistd/write.o
 # Unsafe functions
