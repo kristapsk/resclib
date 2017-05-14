@@ -78,6 +78,8 @@ LIBC_OBJS= \
 	libc/stdlib/ldiv.o \
 	libc/stdlib/llabs.o \
 	libc/stdlib/lldiv.o \
+	libc/stdlib/rand.o \
+	libc/stdlib/rand_r.o \
 	libc/stdlib/mblen.o \
 	libc/stdlib/ui64toa_s.o \
 	libc/string/bcopy.o \

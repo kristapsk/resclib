@@ -85,10 +85,35 @@ static void test_div (void)
     }
 }
 
+static void test_rand (void)
+{
+    assert_true(RAND_MAX >= 32767);
+    // By C standard, same seeds should generate the same random numbers and
+    // seed should change only by calls to srand() and rand().
+    // All numbers need to be between 0 and RAND_MAX.
+    srand(123456);
+    int rand_a1 = rand();
+    assert_true(rand_a1 >= 0);
+    assert_true(rand_a1 <= RAND_MAX);
+    int rand_b1 = rand();
+    assert_true(rand_b1 >= 0);
+    assert_true(rand_b1 <= RAND_MAX);
+    srand(123456);
+    int rand_a2 = rand();
+    assert_true(rand_a2 >= 0);
+    assert_true(rand_a2 <= RAND_MAX);
+    int rand_b2 = rand();
+    assert_true(rand_b2 >= 0);
+    assert_true(rand_b2 <= RAND_MAX);
+    assert_int_equal(rand_a1, rand_a2);
+    assert_int_equal(rand_b1, rand_b2);
+}
+
 void test_stdlib (void)
 {
     test_fixture_start();
     run_test(test_abs);
     run_test(test_div);
+    run_test(test_rand);
     test_fixture_end();
 }

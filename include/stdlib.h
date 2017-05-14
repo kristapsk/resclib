@@ -12,6 +12,8 @@
 #define EXIT_SUCCESS    (0)
 #define EXIT_FAILURE    (1)
 
+#define RAND_MAX        (UINT_MAX)
+
 typedef struct {
     int quot;
     int rem;
@@ -67,6 +69,13 @@ extern "C" {
         size_t dest_nbytes, int radix);
     errno_t _ui64toa_s (unsigned __int64 value, char* dest,
         size_t dest_nbytes, int radix);
+#endif
+
+/*** Pseudo-random sequence generation *************************************/
+int rand (void);
+void srand (unsigned int seed);
+#if defined(_RESCLIB_SOURCE) || defined(_XOPEN_SOURCE) || defined (_POSIX_SOURCE) || (_POSIX_C_SOURCE >= 1)
+    int rand_r (unsigned int* seed);
 #endif
 
 /*** Environment ***********************************************************/
