@@ -11,7 +11,7 @@ char* __asctime (const struct tm* timeptr)
     return buf;
 }
 
-char asctime (const struct tm* timeptr)
+char* asctime (const struct tm* timeptr)
     _WEAK_ALIAS_OF("__asctime");
 
 #ifdef __cplusplus
