@@ -24,6 +24,7 @@ $(BUILDDIR):
 CRT0_OBJ = libc/sys/$(CPU_ARCH)-$(OS_ARCH)/crt0.o
 LIBC_OBJS= \
 	libc/init.o \
+	libc/assert/assert.o \
 	libc/ctype/isalnum.o \
 	libc/ctype/isalpha.o \
 	libc/ctype/isascii.o \
