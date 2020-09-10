@@ -10,6 +10,7 @@
 #define EILSEQ      (3)
 
 #define EINVAL      (4)
+#define EOVERFLOW   (5)
 
 int* __errno_location (void);
 

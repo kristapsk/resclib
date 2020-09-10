@@ -126,9 +126,9 @@ LIBC_OBJS= \
 	libc/string/wmemmove_s.o \
 	libc/string/wmemset.o \
 	libc/string/wzero.o \
-	libc/time/asctime_s.o \
+	libc/time/asctime_r.o \
 	libc/time/difftime.o \
-	libc/time/gmtime_s.o \
+	libc/time/gmtime_r.o \
 	libc/time/time.o \
 	libc/unistd/read.o \
 	libc/unistd/write.o

@@ -15,7 +15,7 @@ static inline int dayofweek (int year, int month, int day)
 }
 */
 
-errno_t __gmtime_s (const time_t* timer, struct tm* result)
+struct tm* __gmtime_r (const time_t* timer, struct tm* result)
 {
     static const char daysinmonth[] = {
         31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
@@ -23,8 +23,8 @@ errno_t __gmtime_s (const time_t* timer, struct tm* result)
 
     // -12219292800 is Oct 15, 1582 00:00:00 - start of Gregorian calendar
     if ((timer == NULL) || (result == NULL) || (*timer < -12219292800)) {
-        ___set_errno(EINVAL);
-        return EINVAL;
+        ___set_errno(EOVERFLOW);
+        return NULL;
     }
 
     // Getting seconds, minutes and hours are simple
@@ -73,11 +73,11 @@ errno_t __gmtime_s (const time_t* timer, struct tm* result)
     // we are UTC, so no DST
     result->tm_isdst = 0;
 
-    return 0;
+    return result;
 }
 
-errno_t gmtime_s (const time_t* timer, struct tm* result)
-    _WEAK_ALIAS_OF("__gmtime_s");
+struct tm* gmtime_r (const time_t* timer, struct tm* result)
+    _WEAK_ALIAS_OF("__gmtime_r");
 
 #ifdef __cplusplus
 }

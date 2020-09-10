@@ -7,7 +7,7 @@ extern "C" {
 struct tm* __gmtime (const time_t* timer)
 {
     static struct tm t;
-    return (__gmtime_s(timer, &t) == 0 ? &t : NULL);
+    return __gmtime_r(timer, &t);
 }
 
 struct tm* gmtime (const time_t* timer)

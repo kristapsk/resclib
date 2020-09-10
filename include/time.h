@@ -34,11 +34,9 @@ time_t time (time_t* timer);
     struct tm* gmtime (const time_t* timer);
 #endif
 
-#if (__STDC_VERSION__ >= 201112L)
-    #include <_errno_t.h>
-    errno_t asctime_s (char* buf, size_t buf_nbytes,
-        const struct tm* timeptr);
-    errno_t gmtime_s (const time_t* timer, struct tm* result);
+#if defined(_RESCLIB_SOURCE) || defined(_XOPEN_SOURCE) || defined (_POSIX_SOURCE) || (_POSIX_C_SOURCE >= 1)
+    char* asctime_r (const struct tm* timeptr, char* buf);
+    struct tm* gmtime_r (const time_t* timer, struct tm* result);
 #endif
 
 /*** Macro constants *******************************************************/

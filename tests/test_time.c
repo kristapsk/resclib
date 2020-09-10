@@ -1,7 +1,7 @@
 #define _RESCLIB_SOURCE
 #include <stdlib.h>
-#undef _RESCLIB_SOURCE
 #include <time.h>
+#undef _RESCLIB_SOURCE
 #include "seatest.h"
 
 static void test_clock (void)
@@ -25,9 +25,9 @@ static void test_gmtime_asctime (void)
     assert_int_equal(_countof(timestamps), _countof(timestamp_strings));
     for (size_t i = 0; i < _countof(timestamps); i++) {
         struct tm t;
-        gmtime_s(&(timestamps[i]), &t);
+        gmtime_r(&(timestamps[i]), &t);
         char buf[26];
-        asctime_s(buf, sizeof(buf), &t);
+        asctime_r(&t, buf);
         assert_string_equal(timestamp_strings[i], buf);
     }
 }
