@@ -1,3 +1,4 @@
+#include <errno.h>
 #include <memory.h>
 #include "seatest.h"
 
@@ -42,6 +43,17 @@ static void test_memcpy (void)
     assert_true(s[10] == 'x');
 }
 
+static void test_memcpy_s (void)
+{
+    static char s1[] = "xxxxxxxx";
+    static char s2[] = "yyyyyyyy";
+
+    assert_true(memcpy_s(s1, 1, s2, 0) == 0);
+    assert_true(memcpy_s(NULL, 1, s2, 1) == EINVAL);
+    assert_true(memcpy_s(s1, 1, NULL, 1) == EINVAL);
+    assert_true(memcpy_s(s1, 1, s2, 2) == ERANGE);
+}
+
 static void test_memmove (void)
 {
     char s[] = "xxxxabcde";
@@ -52,6 +64,16 @@ static void test_memmove (void)
     assert_true(s[5] == 'b');
     assert_true(memmove(s + 4, s, 5) == s + 4);
     assert_true(s[4] == 'a');
+}
+
+static void test_memmove_s (void)
+{
+    static char s1[] = "xxxxxxxx";
+    static char s2[] = "yyyyyyyy";
+
+    assert_true(memmove_s(NULL, 1, s2, 1) == EINVAL);
+    assert_true(memmove_s(s1, 1, NULL, 1) == EINVAL);
+    assert_true(memmove_s(s1, 1, s2, 2) == ERANGE);
 }
 
 static void test_memset (void)
@@ -75,7 +97,9 @@ void test_memory (void)
     run_test(test_memchr);
     run_test(test_memcmp);
     run_test(test_memcpy);
+    run_test(test_memcpy_s);
     run_test(test_memmove);
+    run_test(test_memmove_s);
     run_test(test_memset);
     test_fixture_end();
 }
