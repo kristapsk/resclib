@@ -162,6 +162,7 @@ TEST_OBJS = \
 	tests/test_ctype.o \
 	tests/test_errno.o \
 	tests/test_locale.o \
+	tests/test_memory.o \
 	tests/test_stdlib.o \
 	tests/test_string.o \
 	tests/test_time.o
